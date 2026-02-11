@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oles Shtanko — Research Scientist, IBM Quantum</title>
+  <meta name="description" content="Oles Shtanko — Research Scientist at IBM Quantum. Quantum algorithms, many-body physics, quantum complexity.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --serif: 'Source Serif 4', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --bg: #faf9f7;
+      --text: #1a1a1a;
+      --muted: #5a5a5a;
+      --accent: #2c5f8a;
+      --accent-light: #e8f0f7;
+      --border: #ddd;
+      --max-w: 720px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,249,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav .name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    nav .links { display: flex; gap: 1.5rem; }
+    nav .links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav .links a:hover { color: var(--accent); }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    section { margin-bottom: 3rem; }
+
+    /* ── HEADER ── */
+    .hero {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      margin-bottom: 2.5rem;
+    }
+    .hero-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border);
+      flex-shrink: 0;
+    }
+    .hero-photo-placeholder {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-light), #d4e4f0);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .hero-text h1 {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+    }
+    .hero-text .subtitle {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 0.8rem;
+    }
+    .hero-text .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .hero-text .links-row a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .hero-text .links-row a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+    .hero-text .links-row a svg {
+      width: 14px; height: 14px;
+    }
+
+    /* ── SECTIONS ── */
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--text);
+    }
+    h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--accent);
+    }
+    p { margin-bottom: 0.8rem; }
+    a { color: var(--accent); }
+
+    .bio { font-size: 1rem; color: var(--text); }
+
+    /* ── NEWS ── */
+    .news-list { list-style: none; }
+    .news-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+      font-size: 0.92rem;
+    }
+    .news-list li:last-child { border-bottom: none; }
+    .news-date {
+      display: inline-block;
+      width: 50px;
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 0.82rem;
+    }
+
+    /* ── RESEARCH ── */
+    .research-area {
+      margin-bottom: 1.5rem;
+      padding: 1.2rem;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 6px;
+    }
+    .research-area p { font-size: 0.93rem; color: var(--muted); }
+    .paper-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+    .paper-tag {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      background: var(--accent-light);
+      border-radius: 3px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { list-style: none; }
+    .pub-list li {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #eee;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .pub-list li:last-child { border-bottom: none; }
+    .pub-label {
+      display: inline-block;
+      font-weight: 600;
+      color: var(--accent);
+      min-width: 32px;
+    }
+    .pub-venue {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.1rem 0.45rem;
+      background: var(--accent-light);
+      border-radius: 3px;
+      color: var(--accent);
+      margin-left: 0.3rem;
+    }
+    .pub-link {
+      font-size: 0.8rem;
+      margin-left: 0.3rem;
+    }
+
+    /* ── TALKS ── */
+    .talks-list { list-style: none; }
+    .talks-list li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #eee;
+      font-size: 0.92rem;
+    }
+    .talks-list li:last-child { border-bottom: none; }
+    .talk-year {
+      display: inline-block;
+      width: 45px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .talk-venue { color: var(--muted); }
+    .video-badge {
+      font-size: 0.75rem;
+      padding: 0.15rem 0.45rem;
+      background: #d32f2f;
+      color: #fff;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 0.3rem;
+    }
+    .video-badge:hover { background: #b71c1c; color: #fff; }
+
+    /* ── COLLAPSIBLE ── */
+    details {
+      margin-top: 1rem;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      background: #fff;
+    }
+    details summary {
+      padding: 0.8rem 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
+    details summary:hover { background: var(--accent-light); }
+    details[open] summary { border-bottom: 1px solid #eee; }
+    details .inner-content { padding: 0.5rem 1rem 1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero { flex-direction: column; align-items: center; text-align: center; }
+      .hero-text .links-row { justify-content: center; }
+      .hero-text h1 { font-size: 1.8rem; }
+      nav .links { gap: 1rem; }
+      nav .links a { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="#" class="name">Oles Shtanko</a>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#talks">Talks</a>
+      <a href="cv.pdf">CV</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ── HERO ── -->
+  <div class="hero" id="about">
+    <!-- Replace the placeholder with: <img src="photo.jpg" class="hero-photo" alt="Oles Shtanko"> -->
+    <div class="hero-photo-placeholder">OS</div>
+    <div class="hero-text">
+      <h1>Oles Shtanko</h1>
+      <div class="subtitle">Research Scientist · IBM Quantum</div>
+      <div class="links-row">
+        <a href="mailto:oles.shtanko@pm.me">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 4 10 8 10-8"/></svg>
+          Email
+        </a>
+        <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+          Scholar
+        </a>
+        <a href="https://arxiv.org/search/?query=oles+shtanko&searchtype=author" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          arXiv
+        </a>
+        <a href="https://www.linkedin.com/in/oles-shtanko-728a2a68/" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BIO ── -->
+  <section>
+    <p class="bio">
+      I am a Research Scientist at <strong>IBM Quantum</strong> (Thomas J. Watson Research Center), working on the Quantum Algorithms for Near-Term and Early Fault-Tolerance team. My research focuses on quantum algorithms for physics simulation, thermal state preparation, quantum complexity of noisy systems, and measurement-based quantum algorithms.
+    </p>
+    <p class="bio">
+      I received my Ph.D. in Physics from <strong>MIT</strong> (2019), advised by <a href="https://en.wikipedia.org/wiki/Seth_Lloyd">Seth Lloyd</a> and <a href="https://en.wikipedia.org/wiki/Leonid_Levitov">Leonid Levitov</a>. Before IBM, I was a Postdoctoral Fellow at <strong>QuICS &amp; JQI</strong>, University of Maryland.
+    </p>
+  </section>
+
+  <!-- ── NEWS ── -->
+  <section>
+    <h2>News</h2>
+    <ul class="news-list">
+      <li><span class="news-date">2026</span> New paper in <em>Nature Communications</em>: "Realization of two-dimensional discrete time crystals"</li>
+      <li><span class="news-date">2025</span> Co-organizing <a href="https://qsimconference.org">QSim 2025</a> at IBM Quantum</li>
+      <li><span class="news-date">2025</span> Talk at KITP program "Noise-robust Phases of Quantum Matter," UCSB</li>
+      <li><span class="news-date">2025</span> "Uncovering local integrability" published in <em>Nature Communications</em></li>
+      <li><span class="news-date">2025</span> "Complexity of local quantum circuits under nonunital noise" published in <em>PRX Quantum</em></li>
+      <li><span class="news-date">2025</span> "Bounds on autonomous quantum error correction" published in <em>Quantum</em></li>
+    </ul>
+  </section>
+
+  <!-- ── RESEARCH ── -->
+  <section id="research">
+    <h2>Research</h2>
+
+    <div class="research-area">
+      <h3>Quantum Algorithms &amp; Simulation</h3>
+      <p>I develop quantum algorithms for physics simulation on near-term and early fault-tolerant hardware, including tensor-network-enhanced Hamiltonian simulation and efficient quantum Gibbs sampling protocols. A key result: designing and executing quantum experiments on up to 124 qubits.</p>
+      <div class="paper-tags">
+        <span class="paper-tag">Nature Comm. 2025</span>
+        <span class="paper-tag">PRX Quantum 2025</span>
+        <span class="paper-tag">arXiv 2025</span>
+      </div>
+    </div>
+
+    <div class="research-area">
+      <h3>Quantum Complexity &amp; Noise</h3>
+      <p>I study the computational power of noisy quantum systems. A central result: circuits with nonunital noise are computationally universal with only polylogarithmic overhead — realistic noise doesn't necessarily kill quantum advantage.</p>
+      <div class="paper-tags">
+        <span class="paper-tag">PRX Quantum 2025</span>
+        <span class="paper-tag">PRX Quantum 2022</span>
+        <span class="paper-tag">PRX Quantum 2021</span>
+      </div>
+    </div>
+
+    <div class="research-area">
+      <h3>Topological Quantum Matter</h3>
+      <p>My work on topological phases combines theoretical predictions with quantum simulation, including observing and braiding Majorana modes on programmable quantum hardware and establishing stability of Floquet topological phases under disorder.</p>
+      <div class="paper-tags">
+        <span class="paper-tag">Nature Comm. 2023</span>
+        <span class="paper-tag">PRL 2020</span>
+        <span class="paper-tag">PRL 2018</span>
+        <span class="paper-tag">Nature Physics 2016</span>
+      </div>
+    </div>
+
+    <div class="research-area">
+      <h3>Autonomous Quantum Error Correction</h3>
+      <p>I investigate fundamental limits of passive quantum error correction using engineered dissipation, establishing bounds on how well autonomous decoders can protect quantum information without active measurement.</p>
+      <div class="paper-tags">
+        <span class="paper-tag">Quantum 2025</span>
+        <span class="paper-tag">PNAS 2018</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PUBLICATIONS ── -->
+  <section id="publications">
+    <h2>Publications</h2>
+    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 1.2rem;">
+      26 publications · h-index 13 · 746+ citations ·
+      <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">Google Scholar</a>
+    </p>
+
+    <h3 style="margin-top: 1.5rem;">Selected</h3>
+    <ul class="pub-list">
+      <li>
+        <span class="pub-label">[S1]</span>
+        <strong>O. Shtanko</strong>, D.S. Wang, H. Zhang, N. Harle, A. Seif, R. Movassagh, Z. Minev,
+        "Uncovering local integrability in quantum many-body dynamics"
+        <span class="pub-venue">Nature Comm.</span> 16(1), 2552 (2025)
+        <a class="pub-link" href="https://arxiv.org/abs/2307.07552">[arXiv]</a>
+      </li>
+      <li>
+        <span class="pub-label">[S2]</span>
+        <strong>O. Shtanko</strong>, K. Sharma,
+        "Complexity of local quantum circuits under nonunital noise"
+        <span class="pub-venue">PRX Quantum</span> 6(3), 030347 (2025)
+        <a class="pub-link" href="https://doi.org/10.1103/PRXQuantum.6.030347">[DOI]</a>
+      </li>
+      <li>
+        <span class="pub-label">[S3]</span>
+        N. Harle, <strong>O. Shtanko</strong>, R. Movassagh,
+        "Observing and braiding topological Majorana modes on programmable quantum simulators"
+        <span class="pub-venue">Nature Comm.</span> 14(1), 2286 (2023)
+        <a class="pub-link" href="https://doi.org/10.1038/s41467-023-37725-0">[DOI]</a>
+      </li>
+      <li>
+        <span class="pub-label">[S4]</span>
+        <strong>O. Shtanko</strong>, R. Movassagh,
+        "Unitary subharmonic response and Floquet Majorana modes"
+        <span class="pub-venue">PRL</span> 125, 086804 (2020)
+        <a class="pub-link" href="https://doi.org/10.1103/PhysRevLett.125.086804">[DOI]</a>
+      </li>
+      <li>
+        <span class="pub-label">[S5]</span>
+        <strong>O. Shtanko</strong>, L. Levitov,
+        "Robustness and universality of surface states in Dirac materials"
+        <span class="pub-venue">PNAS</span> 115(23), 5908–5913 (2018)
+        <a class="pub-link" href="https://doi.org/10.1073/pnas.1722663115">[DOI]</a>
+      </li>
+      <li>
+        <span class="pub-label">[S6]</span>
+        M.T. Allen, <strong>O. Shtanko</strong> et al.,
+        "Spatially resolved edge currents and guided-wave electronic states in graphene"
+        <span class="pub-venue">Nature Physics</span> 12(2), 128 (2016)
+        <a class="pub-link" href="https://doi.org/10.1038/nphys3534">[DOI]</a>
+      </li>
+    </ul>
+
+    <details>
+      <summary>All Peer-Reviewed Publications (18)</summary>
+      <div class="inner-content">
+        <ul class="pub-list">
+          <li>[1] E.D. Switzer, N.F. Robertson, ..., <strong>O. Shtanko</strong> et al., "Realization of two-dimensional discrete time crystals with anisotropic Heisenberg coupling," <em>Nature Communications</em> <strong>17</strong>(1), 605 (2026). <a class="pub-link" href="https://doi.org/10.1038/s41467-025-56234-6">[DOI]</a></li>
+          <li>[2] <strong>O. Shtanko</strong>, D.S. Wang, H. Zhang, N. Harle, A. Seif, R. Movassagh, Z. Minev, "Uncovering local integrability in quantum many-body dynamics," <em>Nature Communications</em> <strong>16</strong>(1), 2552 (2025). <a class="pub-link" href="https://arxiv.org/abs/2307.07552">[arXiv]</a></li>
+          <li>[3] <strong>O. Shtanko</strong>, K. Sharma, "Complexity of local quantum circuits under nonunital noise," <em>PRX Quantum</em> <strong>6</strong>(3), 030347 (2025). <a class="pub-link" href="https://doi.org/10.1103/PRXQuantum.6.030347">[DOI]</a></li>
+          <li>[4] <strong>O. Shtanko</strong>, Y.J. Liu, S. Lieu, A.V. Gorshkov, V.V. Albert, "Bounds on autonomous quantum error correction," <em>Quantum</em> <strong>9</strong>, 1804 (2025). <a class="pub-link" href="https://arxiv.org/abs/2308.16233">[arXiv]</a></li>
+          <li>[5] N.F. Robertson, B. Pokharel, B. Fuller, E. Switzer, <strong>O. Shtanko</strong>, M. Amico et al., "Tensor network enhanced dynamic multiproduct formulas," <em>PRX Quantum</em> <strong>6</strong>(2), 020360 (2025). <a class="pub-link" href="https://doi.org/10.1103/PRXQuantum.6.020360">[DOI]</a></li>
+          <li>[6] A. Kolchinsky, I. Marvian, ..., <strong>O. Shtanko</strong> et al., "Maximizing free energy gain," <em>Entropy</em> <strong>27</strong>(1), 91 (2025). <a class="pub-link" href="https://arxiv.org/abs/1705.00041">[arXiv]</a></li>
+          <li>[7] N. Harle, <strong>O. Shtanko</strong>, R. Movassagh, "Observing and braiding topological Majorana modes on programmable quantum simulators," <em>Nature Communications</em> <strong>14</strong>(1), 2286 (2023). <a class="pub-link" href="https://doi.org/10.1038/s41467-023-37725-0">[DOI]</a></li>
+          <li>[8] M. Van Regemortel, <strong>O. Shtanko</strong>, et al., "Monitoring-induced entanglement entropy and sampling complexity," <em>Physical Review Research</em> <strong>4</strong>(3), L032021 (2022). <a class="pub-link" href="https://doi.org/10.1103/PhysRevResearch.4.L032021">[DOI]</a></li>
+          <li>[9] S. Lieu, M. McGinley, <strong>O. Shtanko</strong>, N.R. Cooper, A.V. Gorshkov, "Kramers' degeneracy for open systems in thermal equilibrium," <em>Physical Review B</em> <strong>105</strong>(12), L121104 (2022). <a class="pub-link" href="https://doi.org/10.1103/PhysRevB.105.L121104">[DOI]</a></li>
+          <li>[10] A. Deshpande, B. Fefferman, ..., <strong>O. Shtanko</strong>, "Tight bounds on the convergence of noisy random circuits to the uniform distribution," <em>PRX Quantum</em> <strong>3</strong>(4), 040329 (2022). <a class="pub-link" href="https://doi.org/10.1103/PRXQuantum.3.040329">[DOI]</a></li>
+          <li>[11] <strong>O. Shtanko</strong>, A. Deshpande, P.S. Julienne, A.V. Gorshkov, "Complexity of fermionic dissipative interactions and applications to quantum computing," <em>PRX Quantum</em> <strong>2</strong>, 030350 (2021). <a class="pub-link" href="https://doi.org/10.1103/PRXQuantum.2.030350">[DOI]</a></li>
+          <li>[12] <strong>O. Shtanko</strong>, R. Movassagh, "Unitary subharmonic response and Floquet Majorana modes," <em>Physical Review Letters</em> <strong>125</strong>, 086804 (2020). <a class="pub-link" href="https://doi.org/10.1103/PhysRevLett.125.086804">[DOI]</a></li>
+          <li>[13] K.X. Wei, P. Peng, <strong>O. Shtanko</strong>, et al., "Emergent prethermalization signatures in out-of-time ordered correlations," <em>Physical Review Letters</em> <strong>123</strong>(9), 090605 (2019). <a class="pub-link" href="https://doi.org/10.1103/PhysRevLett.123.090605">[DOI]</a></li>
+          <li>[14] <strong>O. Shtanko</strong>, R. Movassagh, "Stability of disordered Floquet topological phases," <em>Physical Review Letters</em> <strong>121</strong>, 126803 (2018). <a class="pub-link" href="https://doi.org/10.1103/PhysRevLett.121.126803">[DOI]</a></li>
+          <li>[15] <strong>O. Shtanko</strong>, L. Levitov, "Robustness and universality of surface states in Dirac materials," <em>PNAS</em> <strong>115</strong>(23), 5908–5913 (2018). <a class="pub-link" href="https://doi.org/10.1073/pnas.1722663115">[DOI]</a></li>
+          <li>[16] M.T. Allen, <strong>O. Shtanko</strong>, et al., "Observation of electron coherence and Fabry–Pérot standing waves at a graphene edge," <em>Nano Letters</em> <strong>17</strong>(12), 7380–7386 (2017). <a class="pub-link" href="https://doi.org/10.1021/acs.nanolett.7b03156">[DOI]</a></li>
+          <li>[17] M.T. Allen, <strong>O. Shtanko</strong>, et al., "Spatially resolved edge currents and guided-wave electronic states in graphene," <em>Nature Physics</em> <strong>12</strong>(2), 128 (2016). <a class="pub-link" href="https://doi.org/10.1038/nphys3534">[DOI]</a></li>
+          <li>[18] <strong>O. Shtanko</strong>, K. Snizhko, V. Cheianov, "Nonequilibrium noise in transport across a tunneling contact between ν=2/3 fractional quantum Hall edges," <em>Physical Review B</em> <strong>89</strong>(12), 125104 (2014). <a class="pub-link" href="https://doi.org/10.1103/PhysRevB.89.125104">[DOI]</a></li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Preprints (8)</summary>
+      <div class="inner-content">
+        <ul class="pub-list">
+          <li>[19] D. Hahn, R. Sweke, A. Deshpande, <strong>O. Shtanko</strong>, "Efficient quantum Gibbs sampling with local circuits," arXiv:2506.04321 (2025). <a class="pub-link" href="https://arxiv.org/abs/2506.04321">[arXiv]</a></li>
+          <li>[20] W. Zhong, <strong>O. Shtanko</strong>, R. Movassagh, "Advantage of quantum neural networks as quantum information decoders," arXiv:2401.06300 (2024). <a class="pub-link" href="https://arxiv.org/abs/2401.06300">[arXiv]</a></li>
+          <li>[21] <strong>O. Shtanko</strong>, R. Movassagh, "Preparing thermal states on noiseless and noisy programmable quantum processors," arXiv:2112.14688 (2021). <a class="pub-link" href="https://arxiv.org/abs/2112.14688">[arXiv]</a></li>
+          <li>[22] Y. Kharkov, <strong>O. Shtanko</strong>, et al., "Discovering hydrodynamic equations of many-body quantum systems," arXiv:2111.02385 (2021). <a class="pub-link" href="https://arxiv.org/abs/2111.02385">[arXiv]</a></li>
+          <li>[23] <strong>O. Shtanko</strong>, Y.A. Kharkov, et al., "Classical models of entanglement in monitored random circuits," arXiv:2004.06736 (2020). <a class="pub-link" href="https://arxiv.org/abs/2004.06736">[arXiv]</a></li>
+          <li>[24] <strong>O. Shtanko</strong>, S. Lloyd, "Hydrodynamic behavior of non-interacting quantum particles in presence of dephasing," arXiv:1807.07087 (2018). <a class="pub-link" href="https://arxiv.org/abs/1807.07087">[arXiv]</a></li>
+          <li>[25] C. Gokler, ..., <strong>O. Shtanko</strong>, et al., "When is a bit worth much more than kT ln 2?" arXiv:1705.09598 (2017). <a class="pub-link" href="https://arxiv.org/abs/1705.09598">[arXiv]</a></li>
+          <li>[26] K. Akkaravarawong, <strong>O. Shtanko</strong>, L. Levitov, "Ballistic guided electron states in graphene," arXiv:1512.04185 (2015). <a class="pub-link" href="https://arxiv.org/abs/1512.04185">[arXiv]</a></li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ── TALKS ── -->
+  <section id="talks">
+    <h2>Talks</h2>
+    <ul class="talks-list">
+      <li>
+        <span class="talk-year">2025</span>
+        Noise-robust quantum dynamics and quantum refrigerators
+        <span class="talk-venue">— KITP, UCSB</span>
+      </li>
+      <li>
+        <span class="talk-year">2024</span>
+        Criteria for stable quantum memories protected by engineered dissipation
+        <span class="talk-venue">— QSim 2024, URI</span>
+      </li>
+      <li>
+        <span class="talk-year">2023</span>
+        Uncovering local integrability in quantum many-body dynamics
+        <span class="talk-venue">— Qiskit Seminar Series, IBM</span>
+        <a class="video-badge" href="https://www.youtube.com/watch?v=fWhmWbi-gaY" target="_blank">▶ Video</a>
+      </li>
+      <li>
+        <span class="talk-year">2022</span>
+        Gibbs state samplers with noiseless and noisy random quantum circuits
+        <span class="talk-venue">— BIRS, Banff</span>
+        <a class="video-badge" href="https://www.birs.ca/events/2022/5-day-workshops/22w5111/videos/watch/202203151159-Shtanko.html" target="_blank">▶ Video</a>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  Oles Shtanko · IBM Quantum · Last updated February 2026
+</footer>
+
+</body>
+</html>
